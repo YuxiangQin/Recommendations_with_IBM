@@ -16159,7 +16159,7 @@ The 3 most similar users to user 46 are: [4201, 3782, 23]
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[421]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[428]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">get_top_sorted_users</span><span class="p">(</span><span class="n">user_id</span><span class="p">,</span> <span class="n">df</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">user_item</span><span class="o">=</span><span class="n">user_item</span><span class="p">):</span>
@@ -16234,13 +16234,15 @@ The 3 most similar users to user 46 are: [4201, 3782, 23]
     <span class="k">for</span> <span class="n">neighbour</span> <span class="ow">in</span> <span class="n">similar_users</span><span class="o">.</span><span class="n">index</span><span class="p">:</span>
         <span class="n">rec_ids</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">get_user_articles</span><span class="p">(</span><span class="n">neighbour</span><span class="p">)</span>
         <span class="n">ids_add</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">rec_ids</span><span class="p">)</span> <span class="o">-</span> <span class="n">seen_article_ids_set</span><span class="p">)</span>
-        <span class="n">recs_to_add</span> <span class="o">=</span> <span class="n">top_articles</span><span class="p">[</span><span class="n">top_articles</span><span class="p">[</span><span class="s1">'article_id'</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">ids_add</span><span class="p">)][</span><span class="s1">'title'</span><span class="p">]</span>
+        <span class="n">recs_to_add</span> <span class="o">=</span> <span class="n">top_articles</span><span class="p">[</span><span class="n">top_articles</span><span class="p">[</span><span class="s1">'article_id'</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">ids_add</span><span class="p">)]</span>
+        <span class="n">ids_to_add</span> <span class="o">=</span> <span class="n">recs_to_add</span><span class="p">[</span><span class="s1">'article_id'</span><span class="p">]</span>
+        <span class="n">articles_to_add</span> <span class="o">=</span> <span class="n">recs_to_add</span><span class="p">[</span><span class="s1">'title'</span><span class="p">]</span>
         
         <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">ids_add</span><span class="p">)</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">recs</span><span class="p">)</span> <span class="o">+</span> <span class="nb">len</span><span class="p">(</span><span class="n">ids_add</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">m</span><span class="p">:</span>
             <span class="n">n</span> <span class="o">=</span> <span class="n">m</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">recs</span><span class="p">)</span>
             
-        <span class="k">for</span> <span class="n">rec_id</span><span class="p">,</span> <span class="n">rec_article_name</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">ids_add</span><span class="p">[:</span><span class="n">n</span><span class="p">],</span> <span class="n">recs_to_add</span><span class="p">[:</span><span class="n">n</span><span class="p">]):</span>
+        <span class="k">for</span> <span class="n">rec_id</span><span class="p">,</span> <span class="n">rec_article_name</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">ids_to_add</span><span class="p">[:</span><span class="n">n</span><span class="p">],</span> <span class="n">articles_to_add</span><span class="p">[:</span><span class="n">n</span><span class="p">]):</span>
             <span class="n">recs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">rec_id</span><span class="p">)</span>
             <span class="n">rec_names</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">rec_article_name</span><span class="p">)</span>
         
@@ -16260,7 +16262,7 @@ The 3 most similar users to user 46 are: [4201, 3782, 23]
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[422]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[429]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Quick spot check - don't change this code - just use it to test your functions</span>
@@ -16292,7 +16294,7 @@ The 3 most similar users to user 46 are: [4201, 3782, 23]
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
 <pre>The top 10 recommendations for user 20 are the following article ids:
-[&#39;1160.0&#39;, &#39;686.0&#39;, &#39;1330.0&#39;, &#39;1150.0&#39;, &#39;1351.0&#39;, &#39;1433.0&#39;, &#39;1166.0&#39;, &#39;761.0&#39;, &#39;1407.0&#39;, &#39;1276.0&#39;]
+[&#39;1330.0&#39;, &#39;1427.0&#39;, &#39;1364.0&#39;, &#39;1170.0&#39;, &#39;1162.0&#39;, &#39;1304.0&#39;, &#39;1351.0&#39;, &#39;1160.0&#39;, &#39;1354.0&#39;, &#39;1368.0&#39;]
 
 The top 10 recommendations for user 20 are the following article names:
 [&#39;insights from new york car accident reports&#39;, &#39;use xgboost, scikit-learn &amp; ibm watson machine learning apis&#39;, &#39;predicting churn with the spss random tree algorithm&#39;, &#39;apache spark lab, part 1: basic concepts&#39;, &#39;analyze energy consumption in buildings&#39;, &#39;gosales transactions for logistic regression model&#39;, &#39;model bike sharing data with spss&#39;, &#39;analyze accident reports on amazon emr spark&#39;, &#39;movie recommender system with spark machine learning&#39;, &#39;putting a human face on machine learning&#39;]
@@ -17399,7 +17401,7 @@ class="
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[417]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[427]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">subprocess</span> <span class="kn">import</span> <span class="n">call</span>
@@ -17426,7 +17428,7 @@ class="
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
 <pre>[NbConvertApp] Converting notebook Recommendations_with_IBM.ipynb to html
-[NbConvertApp] Writing 833985 bytes to Recommendations_with_IBM.html
+[NbConvertApp] Writing 836358 bytes to Recommendations_with_IBM.html
 </pre>
 </div>
 </div>
@@ -17434,7 +17436,7 @@ class="
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[417]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[427]:</div>
 
 
 
